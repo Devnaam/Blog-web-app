@@ -1,4 +1,5 @@
 
+import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
@@ -68,36 +69,38 @@ const FeaturedPosts = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {posts.map((post) => (
-            <Card key={post.id} className="overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer">
-              <div className="aspect-video overflow-hidden">
-                <img 
-                  src={post.image} 
-                  alt={post.title}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <Badge 
-                    variant="secondary" 
-                    className={`${
-                      post.category.includes('Finance') 
-                        ? 'bg-green-100 text-green-800' 
-                        : 'bg-blue-100 text-blue-800'
-                    }`}
-                  >
-                    {post.category}
-                  </Badge>
-                  <span className="text-sm text-gray-500">{post.readTime}</span>
+            <Link key={post.id} to={`/blog/${post.id}`}>
+              <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer h-full">
+                <div className="aspect-video overflow-hidden">
+                  <img 
+                    src={post.image} 
+                    alt={post.title}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
-                <h3 className="text-xl font-semibold text-[#0D1B2A] mb-3 line-clamp-2">
-                  {post.title}
-                </h3>
-                <p className="text-gray-600 line-clamp-3">
-                  {post.excerpt}
-                </p>
-              </CardContent>
-            </Card>
+                <CardContent className="p-6">
+                  <div className="flex items-center justify-between mb-3">
+                    <Badge 
+                      variant="secondary" 
+                      className={`${
+                        post.category.includes('Finance') 
+                          ? 'bg-green-100 text-green-800' 
+                          : 'bg-blue-100 text-blue-800'
+                      }`}
+                    >
+                      {post.category}
+                    </Badge>
+                    <span className="text-sm text-gray-500">{post.readTime}</span>
+                  </div>
+                  <h3 className="text-xl font-semibold text-[#0D1B2A] mb-3 line-clamp-2">
+                    {post.title}
+                  </h3>
+                  <p className="text-gray-600 line-clamp-3">
+                    {post.excerpt}
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
           ))}
         </div>
       </div>

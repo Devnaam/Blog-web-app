@@ -1,4 +1,5 @@
 
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 const Hero = () => {
@@ -15,12 +16,16 @@ const Hero = () => {
             from a trusted expert. Build your wealth with confidence.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-[#F4B400] text-[#0D1B2A] hover:bg-[#F4B400]/90 font-semibold px-8 py-3">
-              Read the Latest Blog
-            </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-[#0D1B2A] px-8 py-3">
-              Start Learning
-            </Button>
+            <Link to="/blog">
+              <Button size="lg" className="bg-[#F4B400] text-[#0D1B2A] hover:bg-[#F4B400]/90 font-semibold px-8 py-3">
+                Read the Latest Blog
+              </Button>
+            </Link>
+            <Link to="/about">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-[#0D1B2A] px-8 py-3">
+                Start Learning
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

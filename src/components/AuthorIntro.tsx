@@ -1,5 +1,7 @@
 
+import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 const AuthorIntro = () => {
   return (
@@ -29,7 +31,7 @@ const AuthorIntro = () => {
                   strategy, I've been through it all. Now, I share my knowledge to help you 
                   avoid common mistakes and accelerate your financial journey.
                 </p>
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-3 mb-6">
                   <span className="px-4 py-2 bg-[#F4B400] text-[#0D1B2A] rounded-full font-semibold">
                     Certified Trader
                   </span>
@@ -37,6 +39,11 @@ const AuthorIntro = () => {
                     Finance Educator
                   </span>
                 </div>
+                <Link to="/about">
+                  <Button className="bg-[#F4B400] text-[#0D1B2A] hover:bg-[#F4B400]/90">
+                    Learn More About Me
+                  </Button>
+                </Link>
               </div>
             </div>
           </CardContent>
