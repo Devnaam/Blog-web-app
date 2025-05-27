@@ -2,15 +2,20 @@
 import { useParams } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import TableOfContents from "@/components/TableOfContents";
+import RelatedArticles from "@/components/RelatedArticles";
+import SocialSharing from "@/components/SocialSharing";
+import BackToTop from "@/components/BackToTop";
+import ScrollProgress from "@/components/ScrollProgress";
+import BlogBreadcrumb from "@/components/BlogBreadcrumb";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Calendar, Clock, Share2, Twitter, Linkedin } from "lucide-react";
+import { Calendar, Clock, User } from "lucide-react";
 
 const BlogPost = () => {
   const { id } = useParams();
 
-  // Mock blog post data - in a real app, you'd fetch this based on the ID
+  // Mock blog post data
   const blogPost = {
     id: 1,
     title: "5 Essential Chart Patterns Every Trader Must Know",
@@ -58,28 +63,13 @@ const BlogPost = () => {
     date: "2024-01-15",
     author: "Devnaam",
     image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&fit=crop",
-    tags: ["Chart Patterns", "Technical Analysis", "Trading", "Market Analysis"]
-  };
-
-  const handleShare = (platform: string) => {
-    const url = window.location.href;
-    const text = `Check out this article: ${blogPost.title}`;
-    
-    switch (platform) {
-      case 'twitter':
-        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`);
-        break;
-      case 'linkedin':
-        window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`);
-        break;
-      default:
-        navigator.clipboard.writeText(url);
-        break;
-    }
+    tags: ["Chart Patterns", "Technical Analysis", "Trading", "Market Analysis"],
+    description: "Learn the five most essential chart patterns that every trader should master to improve their trading accuracy and market analysis skills."
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors">
+      <ScrollProgress />
       <Navigation />
       
       {/* Hero Section */}
@@ -114,7 +104,10 @@ const BlogPost = () => {
                 <Clock className="w-4 h-4 mr-2" />
                 {blogPost.readTime}
               </div>
-              <div>By {blogPost.author}</div>
+              <div className="flex items-center">
+                <User className="w-4 h-4 mr-2" />
+                {blogPost.author}
+              </div>
             </div>
           </div>
         </div>
@@ -122,23 +115,31 @@ const BlogPost = () => {
 
       {/* Article Content */}
       <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Breadcrumb */}
+          <BlogBreadcrumb category={blogPost.category} title={blogPost.title} />
+          
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
+            {/* Table of Contents - Mobile */}
+            <div className="lg:hidden">
+              <TableOfContents content={blogPost.content} />
+            </div>
+            
             {/* Main Content */}
             <div className="lg:col-span-3">
               <div 
-                className="prose prose-lg max-w-none"
+                className="prose prose-lg max-w-none dark:prose-invert"
                 dangerouslySetInnerHTML={{ __html: blogPost.content }}
                 style={{
                   fontSize: '1.125rem',
                   lineHeight: '1.75',
-                  color: '#374151'
+                  color: 'inherit'
                 }}
               />
               
               {/* Tags */}
-              <div className="mt-12 pt-8 border-t border-gray-200">
-                <h3 className="text-lg font-semibold text-[#0D1B2A] mb-4">Tags</h3>
+              <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+                <h3 className="text-lg font-semibold text-[#0D1B2A] dark:text-white mb-4">Tags</h3>
                 <div className="flex flex-wrap gap-2">
                   {blogPost.tags.map((tag) => (
                     <Badge key={tag} variant="outline" className="text-sm">
@@ -147,49 +148,32 @@ const BlogPost = () => {
                   ))}
                 </div>
               </div>
+
+              {/* Social Sharing */}
+              <div className="mt-8">
+                <SocialSharing 
+                  title={blogPost.title} 
+                  description={blogPost.description}
+                />
+              </div>
+
+              {/* Related Articles */}
+              <RelatedArticles 
+                currentTags={blogPost.tags} 
+                currentId={blogPost.id} 
+              />
             </div>
 
             {/* Sidebar */}
-            <div className="lg:col-span-1">
-              <div className="sticky top-8 space-y-6">
-                {/* Share */}
-                <Card>
-                  <CardContent className="p-6">
-                    <h3 className="text-lg font-semibold text-[#0D1B2A] mb-4 flex items-center">
-                      <Share2 className="w-5 h-5 mr-2" />
-                      Share Article
-                    </h3>
-                    <div className="space-y-3">
-                      <Button 
-                        variant="outline" 
-                        className="w-full justify-start"
-                        onClick={() => handleShare('twitter')}
-                      >
-                        <Twitter className="w-4 h-4 mr-2" />
-                        Share on Twitter
-                      </Button>
-                      <Button 
-                        variant="outline" 
-                        className="w-full justify-start"
-                        onClick={() => handleShare('linkedin')}
-                      >
-                        <Linkedin className="w-4 h-4 mr-2" />
-                        Share on LinkedIn
-                      </Button>
-                      <Button 
-                        variant="outline" 
-                        className="w-full justify-start"
-                        onClick={() => handleShare('copy')}
-                      >
-                        <Share2 className="w-4 h-4 mr-2" />
-                        Copy Link
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
+            <div className="lg:col-span-2">
+              <div className="space-y-6">
+                {/* Table of Contents - Desktop */}
+                <div className="hidden lg:block">
+                  <TableOfContents content={blogPost.content} />
+                </div>
 
                 {/* Newsletter CTA */}
-                <Card className="bg-[#0D1B2A] text-white">
+                <Card className="bg-[#0D1B2A] dark:bg-gray-800 text-white">
                   <CardContent className="p-6">
                     <h3 className="text-lg font-semibold mb-2">
                       Want More Insights?
@@ -197,14 +181,14 @@ const BlogPost = () => {
                     <p className="text-sm text-gray-300 mb-4">
                       Get weekly trading tips and market analysis delivered to your inbox.
                     </p>
-                    <Button className="w-full bg-[#F4B400] text-[#0D1B2A] hover:bg-[#F4B400]/90">
+                    <button className="w-full bg-[#F4B400] text-[#0D1B2A] hover:bg-[#F4B400]/90 px-4 py-2 rounded font-medium transition-colors">
                       Subscribe Now
-                    </Button>
+                    </button>
                   </CardContent>
                 </Card>
 
                 {/* Author Bio */}
-                <Card>
+                <Card className="dark:bg-gray-800">
                   <CardContent className="p-6">
                     <div className="flex items-center mb-4">
                       <img 
@@ -213,16 +197,16 @@ const BlogPost = () => {
                         className="w-12 h-12 rounded-full mr-3"
                       />
                       <div>
-                        <h3 className="font-semibold text-[#0D1B2A]">Devnaam</h3>
-                        <p className="text-sm text-gray-600">Trading Expert</p>
+                        <h3 className="font-semibold text-[#0D1B2A] dark:text-white">Devnaam</h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">Trading Expert</p>
                       </div>
                     </div>
-                    <p className="text-sm text-gray-600 mb-4">
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
                       Passionate trader with 5+ years of experience helping others master the markets.
                     </p>
-                    <Button variant="outline" size="sm" className="w-full">
+                    <button className="w-full border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 px-4 py-2 rounded text-sm transition-colors">
                       View Profile
-                    </Button>
+                    </button>
                   </CardContent>
                 </Card>
               </div>
@@ -231,6 +215,7 @@ const BlogPost = () => {
         </div>
       </section>
 
+      <BackToTop />
       <Footer />
     </div>
   );

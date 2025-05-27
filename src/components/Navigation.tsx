@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ThemeToggle from "./ThemeToggle";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,7 +21,7 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-[#0D1B2A] shadow-lg">
+    <nav className="sticky top-0 z-50 bg-[#0D1B2A] dark:bg-gray-900 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -31,8 +32,8 @@ const Navigation = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
+          <div className="hidden md:flex md:items-center md:space-x-8">
+            <div className="flex items-baseline space-x-8">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
@@ -47,10 +48,12 @@ const Navigation = () => {
                 </Link>
               ))}
             </div>
+            <ThemeToggle />
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
+          {/* Mobile menu button and theme toggle */}
+          <div className="md:hidden flex items-center space-x-2">
+            <ThemeToggle />
             <Button
               variant="ghost"
               size="sm"
@@ -65,15 +68,15 @@ const Navigation = () => {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-[#0D1B2A]">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-[#0D1B2A] dark:bg-gray-900">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   to={item.path}
                   className={`block px-3 py-2 text-base font-medium transition-colors ${
                     isActive(item.path)
-                      ? "text-[#F4B400] bg-[#1e3a5f]"
-                      : "text-white hover:text-[#F4B400] hover:bg-[#1e3a5f]"
+                      ? "text-[#F4B400] bg-[#1e3a5f] dark:bg-gray-800"
+                      : "text-white hover:text-[#F4B400] hover:bg-[#1e3a5f] dark:hover:bg-gray-800"
                   }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
