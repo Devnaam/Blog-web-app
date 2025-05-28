@@ -4,10 +4,13 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ThemeToggle from "./ThemeToggle";
+import UserProfile from "./UserProfile";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const { user, loading } = useAuth();
 
   const isActive = (path: string) => {
     return location.pathname === path;
@@ -48,12 +51,32 @@ const Navigation = () => {
                 </Link>
               ))}
             </div>
-            <ThemeToggle />
+            <div className="flex items-center space-x-4">
+              <ThemeToggle />
+              {!loading && (
+                user ? (
+                  <UserProfile />
+                ) : (
+                  <Link to="/auth">
+                    <Button variant="outline" size="sm" className="text-white border-white hover:bg-white hover:text-[#0D1B2A]">
+                      Sign In
+                    </Button>
+                  </Link>
+                )
+              )}
+            </div>
           </div>
 
           {/* Mobile menu button and theme toggle */}
           <div className="md:hidden flex items-center space-x-2">
             <ThemeToggle />
+            {!loading && !user && (
+              <Link to="/auth">
+                <Button variant="outline" size="sm" className="text-white border-white hover:bg-white hover:text-[#0D1B2A]">
+                  Sign In
+                </Button>
+              </Link>
+            )}
             <Button
               variant="ghost"
               size="sm"
@@ -83,6 +106,11 @@ const Navigation = () => {
                   {item.name}
                 </Link>
               ))}
+              {user && (
+                <div className="px-3 py-2">
+                  <UserProfile />
+                </div>
+              )}
             </div>
           </div>
         )}
