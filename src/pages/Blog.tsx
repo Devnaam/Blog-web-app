@@ -1,5 +1,5 @@
-
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
@@ -85,7 +85,7 @@ const Blog = () => {
   });
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-gray-900">
       <Navigation />
       
       {/* Hero Section */}
@@ -94,14 +94,14 @@ const Blog = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             Trading & Finance <span className="text-[#F4B400]">Blog</span>
           </h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-300">
             Expert insights, strategies, and tips to help you master the markets and manage your money
           </p>
         </div>
       </section>
 
       {/* Search and Filter */}
-      <section className="py-8 bg-gray-50">
+      <section className="py-8 bg-gray-50 dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
             {/* Search Bar */}
@@ -112,7 +112,7 @@ const Blog = () => {
                 placeholder="Search articles..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10"
+                className="pl-10 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
               />
             </div>
 
@@ -126,7 +126,7 @@ const Blog = () => {
                   onClick={() => setSelectedCategory(category)}
                   className={selectedCategory === category 
                     ? "bg-[#F4B400] text-[#0D1B2A] hover:bg-[#F4B400]/90" 
-                    : "border-[#0D1B2A] text-[#0D1B2A] hover:bg-[#0D1B2A] hover:text-white"
+                    : "border-[#0D1B2A] dark:border-gray-600 text-[#0D1B2A] dark:text-white hover:bg-[#0D1B2A] hover:text-white dark:hover:bg-gray-700"
                   }
                 >
                   {category}
@@ -141,65 +141,67 @@ const Blog = () => {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
-            <h2 className="text-2xl font-bold text-[#0D1B2A]">
+            <h2 className="text-2xl font-bold text-[#0D1B2A] dark:text-white">
               {searchTerm ? `Search results for "${searchTerm}"` : `All Articles`}
-              <span className="text-gray-500 ml-2">({filteredPosts.length})</span>
+              <span className="text-gray-500 dark:text-gray-400 ml-2">({filteredPosts.length})</span>
             </h2>
           </div>
 
           {filteredPosts.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredPosts.map((post) => (
-                <Card key={post.id} className="overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer">
-                  <div className="aspect-video overflow-hidden">
-                    <img 
-                      src={post.image} 
-                      alt={post.title}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <CardContent className="p-6">
-                    <div className="flex items-center justify-between mb-3">
-                      <Badge 
-                        variant="secondary" 
-                        className={`${
-                          post.category.includes('Finance') || post.category.includes('Money')
-                            ? 'bg-green-100 text-green-800' 
-                            : 'bg-blue-100 text-blue-800'
-                        }`}
-                      >
-                        {post.category}
-                      </Badge>
-                      <span className="text-sm text-gray-500">{post.readTime}</span>
+                <Link key={post.id} to={`/blog/${post.id}`}>
+                  <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer dark:bg-gray-800 dark:border-gray-700">
+                    <div className="aspect-video overflow-hidden">
+                      <img 
+                        src={post.image} 
+                        alt={post.title}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      />
                     </div>
-                    <h3 className="text-xl font-semibold text-[#0D1B2A] mb-3 line-clamp-2">
-                      {post.title}
-                    </h3>
-                    <p className="text-gray-600 line-clamp-3 mb-4">
-                      {post.excerpt}
-                    </p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {post.tags.slice(0, 2).map((tag) => (
-                        <span key={tag} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="text-sm text-gray-500">
-                      {new Date(post.date).toLocaleDateString('en-US', { 
-                        year: 'numeric', 
-                        month: 'long', 
-                        day: 'numeric' 
-                      })}
-                    </div>
-                  </CardContent>
-                </Card>
+                    <CardContent className="p-6">
+                      <div className="flex items-center justify-between mb-3">
+                        <Badge 
+                          variant="secondary" 
+                          className={`${
+                            post.category.includes('Finance') || post.category.includes('Money')
+                              ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' 
+                              : 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
+                          }`}
+                        >
+                          {post.category}
+                        </Badge>
+                        <span className="text-sm text-gray-500 dark:text-gray-400">{post.readTime}</span>
+                      </div>
+                      <h3 className="text-xl font-semibold text-[#0D1B2A] dark:text-white mb-3 line-clamp-2">
+                        {post.title}
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-300 line-clamp-3 mb-4">
+                        {post.excerpt}
+                      </p>
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {post.tags.slice(0, 2).map((tag) => (
+                          <span key={tag} className="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-2 py-1 rounded">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="text-sm text-gray-500 dark:text-gray-400">
+                        {new Date(post.date).toLocaleDateString('en-US', { 
+                          year: 'numeric', 
+                          month: 'long', 
+                          day: 'numeric' 
+                        })}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
               ))}
             </div>
           ) : (
             <div className="text-center py-12">
-              <h3 className="text-xl font-semibold text-gray-600 mb-2">No articles found</h3>
-              <p className="text-gray-500">Try adjusting your search or filter criteria</p>
+              <h3 className="text-xl font-semibold text-gray-600 dark:text-gray-300 mb-2">No articles found</h3>
+              <p className="text-gray-500 dark:text-gray-400">Try adjusting your search or filter criteria</p>
             </div>
           )}
         </div>
