@@ -8,6 +8,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/contexts/AuthContext';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import GoogleAuthButton from '@/components/GoogleAuthButton';
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -85,6 +86,23 @@ const Auth = () => {
                   : 'Create an account to get started'
                 }
               </p>
+            </div>
+
+            {/* Google Auth Button */}
+            <div className="mb-6">
+              <GoogleAuthButton />
+            </div>
+
+            {/* Divider */}
+            <div className="relative mb-6">
+              <div className="absolute inset-0 flex items-center">
+                <span className="w-full border-t border-gray-300 dark:border-gray-600" />
+              </div>
+              <div className="relative flex justify-center text-sm">
+                <span className="px-2 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400">
+                  Or continue with email
+                </span>
+              </div>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
