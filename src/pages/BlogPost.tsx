@@ -205,7 +205,7 @@ const BlogPost = () => {
             {/* Main Content */}
             <div className="lg:col-span-3">
               <div className="prose prose-lg max-w-none dark:prose-invert finance-blog-content">
-                <style jsx>{`
+                <style>{`
                   .finance-blog-content .intro-text {
                     font-size: 1.25rem;
                     line-height: 1.8;
