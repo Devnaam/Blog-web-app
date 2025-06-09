@@ -1,73 +1,143 @@
-# Welcome to your Lovable project
+# 📈 Market Mentor Money
 
-## Project info
+Welcome to **Market Mentor Money** — a blog platform dedicated to empowering readers with insights into the **stock market**, **chart analysis**, and **personal finance**. Built with modern web technologies, this platform is designed to be fast, responsive, and SEO-optimized.
 
-**URL**: https://lovable.dev/projects/8b81f4a5-52aa-4efb-951e-2a09b99bd751
+---
 
-## How can I edit this code?
+## 🧠 What This Project Offers
 
-There are several ways of editing your application.
+- ✅ Modernized UI with vibrant design and smooth animations
+- ✅ Highly responsive across all devices with adaptive layouts
+- ✅ Dynamic blog posts with Markdown or CMS integration
+- ✅ Sticky Table of Contents for easy navigation
+- ✅ Social sharing options (WhatsApp, LinkedIn, Facebook, Telegram)
+- ✅ Scroll progress bar and "Back to Top" button
+- ✅ Related articles section at the bottom of each blog
+- ✅ Newsletter signup and contact form
+- ✅ Optimized for SEO and performance
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/8b81f4a5-52aa-4efb-951e-2a09b99bd751) and start prompting.
+## 🚀 Live Preview
 
-Changes made via Lovable will be committed automatically to this repo.
+🌐 [Visit the Live Website](https://market-money-mentor.vercel.app/)
 
-**Use your preferred IDE**
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🛠 Tech Stack Used
 
-Follow these steps:
+- **Frontend:** React, TypeScript, HTML, Tailwind CSS
+- **Backend:** Supabase (PostgreSQL with SQL queries)
+- **Authentication:** Supabase Auth for secure user management
+- **CMS (optional):** Sanity / Notion / Markdown
+- **Styling:** Tailwind CSS
+- **Icons:** Lucide / Font Awesome / Heroicons
+- **Hosting:** Vercel
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+---
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## 📁 Project Structure
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+/components → Reusable UI components (Navbar, Footer, BlogCard)
+/pages → Next.js pages (Home, Blog, About, Contact)
+/public → Static files and images
+/styles → Custom global styles
+/utils → Helper functions (e.g., reading time, slug generator)
 ```
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🧪 How to Run Locally
 
-**Use GitHub Codespaces**
+```bash
+# Clone the repository
+git clone https://github.com/Devnaam/market-mentor-money.git
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+# Navigate into the directory
+cd market-mentor-money
 
-## What technologies are used for this project?
+# Install dependencies
+npm install
 
-This project is built with:
+# Start the development server
+npm run dev
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+# Open your browser at http://localhost:3000
+```
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/8b81f4a5-52aa-4efb-951e-2a09b99bd751) and click on Share -> Publish.
+## ✍️ Example Blog Features
 
-## Can I connect a custom domain to my Lovable project?
+- Blog posts with titles, featured images, author names, and tags
+- Table of Contents auto-generated from headings
+- Code syntax highlighting (optional)
+- Highlighted “Key Takeaways” section at the end
+- Related articles based on tags
 
-Yes, you can!
+---
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 📝 Blog Writing & Contributor Guidelines
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+We welcome contributions to **Market Mentor Money**! Here’s how you can contribute as a blog writer or developer:
+
+### For Blog Writers
+1. **Content Focus**: Write articles related to stock market insights, chart analysis, or personal finance. Ensure content is well-researched, actionable, and beginner-friendly.
+2. **Format**: Use Markdown for blog posts. Include:
+   - A title, featured image, author name, and relevant tags.
+   - Headings (H2, H3) for structure, which will auto-generate the Table of Contents.
+   - A “Key Takeaways” section at the end.
+   - Optional code snippets (e.g., for financial calculations) with syntax highlighting.
+3. **Submission**: Submit your blog post as a pull request:
+   - Place the Markdown file in the appropriate directory (e.g., `/content/posts/`).
+   - Ensure the file name is a slug (e.g., `stock-market-basics.md`).
+   - Add frontmatter with metadata (title, date, author, tags, image).
+   - Example frontmatter:
+     ```yaml
+     ---
+     title: "Stock Market Basics for Beginners"
+     date: "2025-06-09"
+     author: "Raj Priyadershi"
+     tags: ["stock-market", "beginner", "finance"]
+     image: "/images/stock-market-basics.jpg"
+     ---
+     ```
+4. **Review Process**: Your post will be reviewed for clarity, accuracy, and relevance. We’ll provide feedback if revisions are needed.
+
+### For Developers
+1. **Code Contributions**: Enhance features, fix bugs, or improve performance.
+2. **Setup**: Follow the “How to Run Locally” steps above.
+3. **Guidelines**:
+   - Follow the project’s coding style (React, TypeScript, Tailwind CSS).
+   - Write clean, modular code (e.g., reusable components in `/components/`).
+   - Test your changes locally before submitting.
+4. **Submission**: Create a pull request with a clear description of your changes.
+
+---
+
+## 📩 Contact & Socials
+
+For feedback, collaborations, or just a chat:
+
+- 📧 **Email**: [workwithdevnaam@gmail.com](mailto:workwithdevnaam@gmail.com)
+- 💼 **LinkedIn**: [Raj Priyadershi](https://www.linkedin.com/in/raj-priyadershi-56a256282/)
+- 🌐 **Portfolio**: [devnaam4s.vercel.app](https://devnaam4s.vercel.app/)
+- 📱 **Phone**: +91 6205791382
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License — feel free to use, modify, and share!
+
+---
+
+## 🙌 Acknowledgements
+
+Built by **Raj Priyadershi**, inspired by a passion to decode markets and simplify money for everyone.
+
+---
+
+Congrats again on launching your platform! 🚀
