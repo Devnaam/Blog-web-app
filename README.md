@@ -20,7 +20,7 @@ Welcome to **Market Mentor Money** — a blog platform dedicated to empowering r
 
 ## 🚀 Live Preview
 
-🌐 [Visit the Live Website](https://market-money-mentor.vercel.app/)
+🌐 [Visit the Live Website](https://blog-web-app-chi.vercel.app/)
 
 
 ---
@@ -64,7 +64,7 @@ Welcome to **Market Mentor Money** — a blog platform dedicated to empowering r
 
 ```bash
 # Clone the repository
-git clone https://github.com/Devnaam/market-mentor-money.git
+git clone https://github.com/Devnaam/blog-webapp.git
 
 # Navigate into the directory
 cd market-mentor-money
