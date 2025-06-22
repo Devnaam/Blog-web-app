@@ -55,7 +55,7 @@ Welcome to **Market Mentor Money** — a blog platform dedicated to empowering r
   <img src="/src/images/img2.png" alt="Image 2" width="180" style="margin-right:10px;"/>
   <img src="/src/images/img3.png" alt="Image 3" width="180" style="margin-right:10px;"/>
   <img src="/src/images/img4.png" alt="Image 4" width="180" style="margin-right:10px;"/>
-  <img src="/src/images/img5.png" alt="Image 5" width="180"/>
+  <!-- <img src="/src/images/img5.png" alt="Image 5" width="180"/> -->
 </p>
 
 ---
