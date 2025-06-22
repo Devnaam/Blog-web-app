@@ -12,7 +12,7 @@ const AuthorIntro = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
               <div className="aspect-square lg:aspect-auto">
                 <img 
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=500&h=500&fit=crop&crop=face" 
+                  src="/src/images/devnaam.png" 
                   alt="Devnaam - Blog Author"
                   className="w-full h-full object-cover"
                 />

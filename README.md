@@ -51,11 +51,11 @@ Welcome to **Market Mentor Money** — a blog platform dedicated to empowering r
 
 <!-- Example: Displaying 5 local images in a row using HTML in README.md -->
 <p align="center">
-  <img src="public/images/img1.jpg" alt="Image 1" width="180" style="margin-right:10px;"/>
-  <img src="public/images/img2.jpg" alt="Image 2" width="180" style="margin-right:10px;"/>
-  <img src="public/images/img3.jpg" alt="Image 3" width="180" style="margin-right:10px;"/>
-  <img src="public/images/img4.jpg" alt="Image 4" width="180" style="margin-right:10px;"/>
-  <img src="public/images/img5.jpg" alt="Image 5" width="180"/>
+  <img src="/src/images/img1.png" alt="Image 1" width="180" style="margin-right:10px;"/>
+  <img src="/src/images/img2.png" alt="Image 2" width="180" style="margin-right:10px;"/>
+  <img src="/src/images/img3.png" alt="Image 3" width="180" style="margin-right:10px;"/>
+  <img src="/src/images/img4.png" alt="Image 4" width="180" style="margin-right:10px;"/>
+  <img src="/src/images/img5.png" alt="Image 5" width="180"/>
 </p>
 
 ---

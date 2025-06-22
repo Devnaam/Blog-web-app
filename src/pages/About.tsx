@@ -31,7 +31,7 @@ const About = () => {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
                 <div className="aspect-square lg:aspect-auto">
                   <img 
-                    src="/src/images/devnaam.jpg" 
+                    src="/src/images/devnaam.png" 
                     alt="Devnaam - Trading Expert"
                     className="w-full h-full object-cover"
                   />
